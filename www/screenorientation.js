@@ -44,6 +44,14 @@ screenOrientation.setOrientation = function(orientation) {
     cordova.exec(null, null, "CDVOrientation", "screenOrientation", [orientationMask, orientation]);
 };
 
+screenOrientation.setOrientationPortrait = function() {
+    cordova.exec(null, null, "CDVOrientation", "screenOrientationPortrait", []);
+};
+
+screenOrientation.setOrientationLandscape = function() {
+    cordova.exec(null, null, "CDVOrientation", "screenOrientationLandscape", []);
+};
+
 if (!screen.orientation) {
     screen.orientation = {};
 }
@@ -75,6 +83,14 @@ function addScreenOrientationApi(screenObject) {
     };
     screenObject.unlock = function() {
         screenOrientation.setOrientation('any');
+    };
+  
+    screenObject.setPortrait = function() {
+        screenOrientation.setOrientationPortrait();
+    };
+
+    screenObject.setLandscape = function() {
+        screenOrientation.setOrientationLandscape();
     };
 }
 
